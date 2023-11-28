@@ -1,0 +1,7 @@
+from flask import jsonify
+from app import app
+
+
+@app.route("/")
+def hello_world():
+    return "<h1>hello world</h1>"
