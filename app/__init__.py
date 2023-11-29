@@ -7,3 +7,5 @@ app.config.from_object(os.environ.get("FLASK_ENV") or "config.DevelopmentConfig"
 
 
 from . import views
+from . import forms
+from . import get_data

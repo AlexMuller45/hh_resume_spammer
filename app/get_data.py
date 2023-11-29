@@ -6,6 +6,7 @@ import tqdm
 
 
 VACANCIES_URL: str = "https://api.hh.ru/vacancies"
+DICTIONARIES_URL: str = "https://api.hh.ru/dictionaries"
 
 
 def json_to_file(data: json, filename) -> None:
@@ -38,8 +39,8 @@ def get_vacancies(
         print("Ошибка: ", response_data)
         return {}
 
-    vacancies = response_data.json()["items"]
-    pages = response_data.json()["pages"]
+    vacancies: list[dict] = response_data.json()["items"]
+    pages: int = response_data.json()["pages"]
 
     for page in tqdm.trange(1, pages):
         params["page"] = page
@@ -50,7 +51,7 @@ def get_vacancies(
         else:
             print(f"Ошибка на странице {page}: ", response_data)
 
-    json_to_file(vacancies, vacancies.json)
+    json_to_file(vacancies, filename="vacancies.json")
     return vacancies
 
 
@@ -58,9 +59,24 @@ def get_full_description(vacancies: json) -> json:
     vacancies_full: list[dict] = []
     for entry in tqdm.tqdm(vacancies):
         vacancy_id = entry["id"]
-        description = requests.get(f"{VACANCIES_URL}/{vacancy_id}")
+        description = requests.get(url=f"{VACANCIES_URL}/{vacancy_id}")
         vacancies_full.append(description.json())
         time.sleep(0.2)
 
-    json_to_file(vacancies_full, "vacancies_full.json")
+    json_to_file(vacancies_full, filename="vacancies_full.json")
     return vacancies_full
+
+
+def get_dictionaries() -> dict:
+    required_key = ["experience", "employment", "schedule"]
+    response_data = requests.get(url=DICTIONARIES_URL)
+    response_json = response_data.json()
+    dictionaries = {key: response_json[key] for key in required_key}
+    print(dictionaries.items())
+    return dictionaries
+
+
+def dictionaries_to_tuple(data: dict) -> dict:
+    return {
+        key: [tuple(item.values()) for item in items] for key, items in data.items()
+    }

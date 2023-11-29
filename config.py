@@ -12,6 +12,7 @@ class BaseConfig:
 
 class DevelopmentConfig(BaseConfig):
     DEBUG = True
+    CSRF_ENABLED = False
 
 
 class ProductionConfig(BaseConfig):
