@@ -12,6 +12,6 @@ class VacanciesSearchForm(FlaskForm):
         label="Название вакансии", default="python", validators=[InputRequired()]
     )
     experience = SelectField(default=None, choices=choices_dict["experience"])
-    employment = SelectField(default=None, choices=choices_dict["employment"])
+    # employment = SelectField(default=None, choices=choices_dict["employment"])
     schedule = SelectField(default=None, choices=choices_dict["schedule"])
     skills = StringField(label="Основные навыки", default=None)

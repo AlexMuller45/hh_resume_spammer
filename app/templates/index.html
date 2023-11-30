@@ -9,24 +9,24 @@
 
         <div class="d-flex flex-column mb-3" style="height: 100px;">
             <label for="text" class="form-label">Название вакансии</label>
-            <input type="text" class="form-control" id="text" name="text" placeholder="python">
+            <input type="text" class="form-control" id="text" name="text" value="python">
         </div>
 
 
         <div class="d-flex justify-content-between column-gap-3" style="height: 100px;">
             <div class="flex-fill">
-                <select class="form-select " aria-label="experience" name="experience">
-                    <option value={{ form.experience }}> опыт работы</option>
+                <select class="form-select" aria-label="Опыт работы" name="experience">
+                    <option value={{ form.experience }}>опыт работы</option>
                 </select>
             </div>
+{#            <div class="flex-fill">#}
+{#                <select class="form-select" aria-label="Тип занятости" name="employment">#}
+{#                    <option value={{ form.employment }}>тип занятости</option>#}
+{#                </select>#}
+{#            </div>#}
             <div class="flex-fill">
-                <select class="form-select" aria-label="employment" name="employment">
-                    <option value={{ form.employment }}> тип занятости</option>
-                </select>
-            </div>
-            <div class="flex-fill">
-                <select class="form-select" aria-label="schedule" name="schedule">
-                    <option value={{ form.schedule }}> тип занятости</option>
+                <select class="form-select" aria-label="График работы" name="schedule">
+                    <option value={{ form.schedule }}>график работы</option>
                 </select>
             </div>
         </div>

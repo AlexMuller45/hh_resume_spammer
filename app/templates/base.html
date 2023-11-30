@@ -8,7 +8,9 @@
 </head>
 <body>
     <nav class="nav" style="height: 80px;">
-        <a class="nav-link active" aria-current="page" href="/">[ Главная ]</a>
+        {% for item in menu %}
+        <a class="nav-link active" aria-current="page" href="{{ item.url }}">[ {{ item.name }} ]</a>
+        {% endfor %}
     </nav>
 
     <div class="container">

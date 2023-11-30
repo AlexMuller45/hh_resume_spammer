@@ -4,6 +4,8 @@ import time
 import requests
 import tqdm
 
+import config
+from config import main_config
 
 VACANCIES_URL: str = "https://api.hh.ru/vacancies"
 DICTIONARIES_URL: str = "https://api.hh.ru/dictionaries"
@@ -22,7 +24,7 @@ def get_vacancies(
     # тип занятости ["full", "part", "project", "probation"]
     employment: str | None = None,
     # график работы ["fullDay", "flexible", "remote"]
-    schedule: str | None = "remote",
+    schedule: str | None = None,
 ) -> json:
     params = {
         "per_page": 100,
@@ -35,6 +37,7 @@ def get_vacancies(
     }
 
     response_data = requests.get(url=VACANCIES_URL, params=params)
+    print(response_data.status_code)
     if not response_data.ok:
         print("Ошибка: ", response_data)
         return {}
@@ -51,7 +54,7 @@ def get_vacancies(
         else:
             print(f"Ошибка на странице {page}: ", response_data)
 
-    json_to_file(vacancies, filename="vacancies.json")
+    json_to_file(vacancies, filename=main_config.vacancies_filename)
     return vacancies
 
 
@@ -72,7 +75,6 @@ def get_dictionaries() -> dict:
     response_data = requests.get(url=DICTIONARIES_URL)
     response_json = response_data.json()
     dictionaries = {key: response_json[key] for key in required_key}
-    print(dictionaries.items())
     return dictionaries
 
 
@@ -80,3 +82,13 @@ def dictionaries_to_tuple(data: dict) -> dict:
     return {
         key: [tuple(item.values()) for item in items] for key, items in data.items()
     }
+
+
+def load_json(filename: str) -> json:
+    with open(filename, "r", encoding="utf-8") as file:
+        data = json.load(file)
+    return data
+
+
+def load_vacancies() -> json:
+    return load_json(main_config.vacancies_filename)
