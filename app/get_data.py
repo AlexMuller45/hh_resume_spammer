@@ -4,7 +4,6 @@ import time
 import requests
 import tqdm
 
-import config
 from config import main_config
 
 VACANCIES_URL: str = "https://api.hh.ru/vacancies"
@@ -84,11 +83,15 @@ def dictionaries_to_tuple(data: dict) -> dict:
     }
 
 
-def load_json(filename: str) -> json:
+def load_json(filename: str) -> list[dict]:
     with open(filename, "r", encoding="utf-8") as file:
         data = json.load(file)
     return data
 
 
-def load_vacancies() -> json:
+def load_vacancies() -> list[dict]:
     return load_json(main_config.vacancies_filename)
+
+
+def load_full_vacancies() -> list[dict]:
+    return load_json(main_config.full_vacancies_filename)

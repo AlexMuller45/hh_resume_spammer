@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Сканер резюме{% endblock %}
+{% block title %}- параметры поиска{% endblock %}
 
 {% block content %}
     <form method="post" action="/" enctype="multipart/form-data">
@@ -9,14 +9,21 @@
 
         <div class="d-flex flex-column mb-3" style="height: 100px;">
             <label for="text" class="form-label">Название вакансии</label>
-            <input type="text" class="form-control" id="text" name="text" value="python">
+            <input type="text" class="form-control" id="text" name="text" value="{{ form.text.data }}">
+        </div>
+
+        <div class="d-flex flex-column mb-3" style="height: 100px;">
+            <label for="negative_text" class="form-label">Исключения</label>
+            <input type="text" class="form-control" id="negative_text" name="negative_text" value="{{ form.negative_text.data }}">
         </div>
 
 
         <div class="d-flex justify-content-between column-gap-3" style="height: 100px;">
             <div class="flex-fill">
                 <select class="form-select" aria-label="Опыт работы" name="experience">
-                    <option value={{ form.experience }}>опыт работы</option>
+                    {% for value, label in form.experience.choices %}
+                        <option value="{{ value }}">{{ label }}</option>
+                    {% endfor %}
                 </select>
             </div>
 {#            <div class="flex-fill">#}
@@ -26,7 +33,9 @@
 {#            </div>#}
             <div class="flex-fill">
                 <select class="form-select" aria-label="График работы" name="schedule">
-                    <option value={{ form.schedule }}>график работы</option>
+                    {% for value, label in form.schedule.choices %}
+                        <option value="{{ value }}">{{ label }}</option>
+                    {% endfor %}
                 </select>
             </div>
         </div>

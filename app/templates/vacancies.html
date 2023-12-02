@@ -1,15 +1,16 @@
 {% extends "base.html" %}
 
-{% block title %}Сканер резюме - список вакансий{% endblock %}
+{% block title %} - список вакансий{% endblock %}
 
 {% block content %}
 
     {% if vacancies %}
         <div class="list-group">
-            <a class="list-group-item">Всего: {{ vacancies|length }} вакансий</a>
+            <a class="list-group-item">Всего: {{ vacancies|length }}</a>
             {% for item in vacancies  %}
                 <a href="{{ item.alternate_url }}" target="_blank" class="list-group-item list-group-item-action">{{ item.name }}</a>
             {% endfor %}
+        <br>
         </div>
     {% else %}
         <div class="alert alert-warning" role="alert">
@@ -17,4 +18,7 @@
         </div>
     {% endif %}
 
+    <div class="d-flex flex-column mb-3">
+        <button class="btn btn-outline-secondary" onclick="window.location.href = '/cover_letters'"> Сгенерировать сопроводительные письма </button>
+    </div>
 {% endblock %}
