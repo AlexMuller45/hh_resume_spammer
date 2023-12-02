@@ -1,0 +1,327 @@
+[
+    {
+        "id": "89545694",
+        "premium": false,
+        "billing_type": {
+            "id": "standard_plus",
+            "name": "Стандарт плюс"
+        },
+        "relations": [],
+        "name": "Младший программист Python/junior programmer Python",
+        "insider_interview": null,
+        "response_letter_required": false,
+        "area": {
+            "id": "1",
+            "name": "Москва",
+            "url": "https://api.hh.ru/areas/1"
+        },
+        "salary": {
+            "from": 50000,
+            "to": null,
+            "currency": "RUR",
+            "gross": true
+        },
+        "type": {
+            "id": "open",
+            "name": "Открытая"
+        },
+        "address": {
+            "city": "Москва",
+            "street": "улица Охотный Ряд",
+            "building": null,
+            "lat": 55.757536,
+            "lng": 37.616414,
+            "description": null,
+            "raw": "Москва, улица Охотный Ряд",
+            "metro": null,
+            "metro_stations": []
+        },
+        "allow_messages": true,
+        "experience": {
+            "id": "noExperience",
+            "name": "Нет опыта"
+        },
+        "schedule": {
+            "id": "remote",
+            "name": "Удаленная работа"
+        },
+        "employment": {
+            "id": "full",
+            "name": "Полная занятость"
+        },
+        "department": null,
+        "contacts": null,
+        "description": "<strong>Обязанности:</strong> <ul> <li>написание простых скриптов для интеграции с маркетплейсами по API</li> <li>написание простых web-серверов с использованием Flask</li> <li>участие в различных проектах по автоматизации работы компании</li> </ul> <strong>Требования:</strong> <ul> <li>навыки программирования на Python на базовом уровне</li> <li>умение работать с API на базовом уровне</li> <li>умение разрабатывать web-серверы на Flask</li> <li>уверенное знание Ubuntu Linux</li> </ul> <strong>Условия:</strong> <ul> <li>полностью удаленная работа</li> <li>гибкий график и отличный руководитель</li> <li>профессиональная среда, которая дает возможность расти</li> <li>крутые амбициозные задачи</li> </ul>",
+        "branded_description": null,
+        "vacancy_constructor_template": null,
+        "key_skills": [],
+        "accept_handicapped": false,
+        "accept_kids": false,
+        "archived": false,
+        "response_url": null,
+        "specializations": [],
+        "professional_roles": [
+            {
+                "id": "96",
+                "name": "Программист, разработчик"
+            }
+        ],
+        "code": null,
+        "hidden": false,
+        "quick_responses_allowed": false,
+        "driver_license_types": [],
+        "accept_incomplete_resumes": false,
+        "employer": {
+            "id": "3383281",
+            "name": "Miss X",
+            "url": "https://api.hh.ru/employers/3383281",
+            "alternate_url": "https://hh.ru/employer/3383281",
+            "logo_urls": {
+                "original": "https://hhcdn.ru/employer-logo-original/1135755.jpg",
+                "240": "https://hhcdn.ru/employer-logo/6163606.jpeg",
+                "90": "https://hhcdn.ru/employer-logo/6163605.jpeg"
+            },
+            "vacancies_url": "https://api.hh.ru/vacancies?employer_id=3383281",
+            "accredited_it_employer": false,
+            "trusted": true
+        },
+        "published_at": "2023-12-01T13:17:27+0300",
+        "created_at": "2023-12-01T13:17:27+0300",
+        "initial_created_at": "2023-11-16T13:17:27+0300",
+        "negotiations_url": null,
+        "suitable_resumes_url": null,
+        "apply_alternate_url": "https://hh.ru/applicant/vacancy_response?vacancyId=89545694",
+        "has_test": false,
+        "test": null,
+        "alternate_url": "https://hh.ru/vacancy/89545694",
+        "working_days": [],
+        "working_time_intervals": [],
+        "working_time_modes": [],
+        "accept_temporary": false,
+        "languages": []
+    },
+    {
+        "id": "89497220",
+        "premium": false,
+        "billing_type": {
+            "id": "standard_plus",
+            "name": "Стандарт плюс"
+        },
+        "relations": [],
+        "name": "Инженер по сопровождению на windows платформах (Junior)",
+        "insider_interview": null,
+        "response_letter_required": false,
+        "area": {
+            "id": "2759",
+            "name": "Ташкент",
+            "url": "https://api.hh.ru/areas/2759"
+        },
+        "salary": null,
+        "type": {
+            "id": "open",
+            "name": "Открытая"
+        },
+        "address": null,
+        "allow_messages": true,
+        "experience": {
+            "id": "noExperience",
+            "name": "Нет опыта"
+        },
+        "schedule": {
+            "id": "remote",
+            "name": "Удаленная работа"
+        },
+        "employment": {
+            "id": "full",
+            "name": "Полная занятость"
+        },
+        "department": null,
+        "contacts": null,
+        "description": "<p>Мы делаем платформу для совместной работы и редакторы документов, которые можно развернуть у себя на сервере или встроить в стороннее веб-приложение. Да, мы команда, которая всерьез конкурирует с Microsoft и Google, и у нас отлично получается!</p> <p>Нашими решениями пользуются крупные европейские университеты, госорганы, коммерческие компании, НКО и индивидуальные пользователи. По нашим самым скромным подсчетам, это более 10 млн. пользователей по всему миру.</p> <p>Ищем джуниор инженера по сопровождению на windows платформах, который хочет интересных технических задач и роста в перспективе.</p> <p>Важно: наличие высшего профильного образования в сфере IT. (либо еще обучаетесь)</p> <p><strong>Требования:</strong></p> <ul> <li>Знание любого скриптового языка Python, Shell, и т.п.</li> <li>Уверенный пользователь Windows.</li> <li>Английский на уровне чтения технической документации.</li> </ul> <p><strong>Будут плюсом:</strong></p> <ul> <li>Опыт подготовки инсталляций для Windows.</li> <li>Знание С#.</li> </ul> <p><strong>Обязанности:</strong></p> <ul> <li>Создание и сопровождение дистрибутивов ONLYOFFICE для различных программно-аппаратных платформ.</li> </ul> <p><strong>Условия:</strong></p> <ul> <li>Уровень оклада на старте определяется по итогам технического интервью</li> <li>Полностью дистанционная работа</li> <li>Пятидневная рабочая неделя, с 10:00 до 18:45, возможен гибкий график</li> <li>Возможности карьерного роста</li> <li> <p><strong>Трудоустройство в соответствии ТК Узбекистана</strong></p> </li> </ul>",
+        "branded_description": null,
+        "vacancy_constructor_template": null,
+        "key_skills": [
+            {
+                "name": "Администрирование серверов Windows"
+            },
+            {
+                "name": "С#"
+            },
+            {
+                "name": "Python"
+            },
+            {
+                "name": "Shell"
+            },
+            {
+                "name": "ONLYOFFICE"
+            }
+        ],
+        "accept_handicapped": false,
+        "accept_kids": false,
+        "archived": false,
+        "response_url": null,
+        "specializations": [],
+        "professional_roles": [
+            {
+                "id": "160",
+                "name": "DevOps-инженер"
+            }
+        ],
+        "code": null,
+        "hidden": false,
+        "quick_responses_allowed": false,
+        "driver_license_types": [],
+        "accept_incomplete_resumes": false,
+        "employer": {
+            "id": "8923607",
+            "name": "Ascensio System",
+            "url": "https://api.hh.ru/employers/8923607",
+            "alternate_url": "https://hh.ru/employer/8923607",
+            "logo_urls": {
+                "original": "https://hhcdn.ru/employer-logo-original/1000881.png",
+                "90": "https://hhcdn.ru/employer-logo/5624304.png",
+                "240": "https://hhcdn.ru/employer-logo/5624305.png"
+            },
+            "vacancies_url": "https://api.hh.ru/vacancies?employer_id=8923607",
+            "accredited_it_employer": false,
+            "trusted": true
+        },
+        "published_at": "2023-11-30T13:39:16+0300",
+        "created_at": "2023-11-30T13:39:16+0300",
+        "initial_created_at": "2023-11-15T13:39:16+0300",
+        "negotiations_url": null,
+        "suitable_resumes_url": null,
+        "apply_alternate_url": "https://hh.ru/applicant/vacancy_response?vacancyId=89497220",
+        "has_test": false,
+        "test": null,
+        "alternate_url": "https://hh.ru/vacancy/89497220",
+        "working_days": [],
+        "working_time_intervals": [],
+        "working_time_modes": [],
+        "accept_temporary": false,
+        "languages": []
+    },
+    {
+        "id": "90054179",
+        "premium": false,
+        "billing_type": {
+            "id": "standard_plus",
+            "name": "Стандарт плюс"
+        },
+        "relations": [],
+        "name": "Backend developer (Senior) Team Lead",
+        "insider_interview": null,
+        "response_letter_required": false,
+        "area": {
+            "id": "1",
+            "name": "Москва",
+            "url": "https://api.hh.ru/areas/1"
+        },
+        "salary": {
+            "from": 180000,
+            "to": 250000,
+            "currency": "RUR",
+            "gross": false
+        },
+        "type": {
+            "id": "open",
+            "name": "Открытая"
+        },
+        "address": null,
+        "allow_messages": true,
+        "experience": {
+            "id": "noExperience",
+            "name": "Нет опыта"
+        },
+        "schedule": {
+            "id": "remote",
+            "name": "Удаленная работа"
+        },
+        "employment": {
+            "id": "full",
+            "name": "Полная занятость"
+        },
+        "department": null,
+        "contacts": null,
+        "description": "<p>Работа в компании IndigoLab - это индивидуальная ответственность за решаемую задачу, ваш успех останется за вами. Свобода в реализации решений, проявление своего таланта и инициативы. Воплощение передовых практик и инновационных подходов.</p> <p>Нам интересны люди с высоким интеллектуальным потенциалом. Способные быстро и качественно разбираться с новой информацией. Критически мыслить, работать в команде, уметь конструктивно развиваться, развивая при этом компанию. Мы всегда должны находить самые простые и эффективные решения, вместе с тем стремиться осваивать и внедрять инновационные подходы. Иметь амбиции соревноваться с лучшими ит-командами в России.</p> <p><em>Indigolab, разработчик SaaS решений для работы с маркетплейсами. Резидент фонда «Сколково», среди клиентов AliExpress, Ozon, ЯндексМаркет.</em></p> <p><strong>Мы ожидаем, что Вы:</strong></p> <p><strong>Senior - backend developer / Team Lead Python</strong></p> <ul> <li>Умеете проектировать и реализовывать архитектурно, декомпозировать<br />сложные задачи</li> <li>Обладаете компетенциями как ментор</li> <li>Понимаете как работает HTTP</li> <li>Уже ранее работали с REST API</li> <li>Умеете работать с базами данных (Mysql/Postgresql)</li> <li>Знаете git, умеете работать в командной строке</li> </ul> <p><strong>Задачи, которые Вас ждут:</strong></p> <ol> <li>Работа с внешними API различных маркетплейсов</li> <li>Обработка больших объемов данных</li> <li>Автоматизация рутинных процессов</li> <li>Разработка сервисов для работы с маркетплейсами</li> <li>Интеграции с различными клиентскими сервисами</li> </ol> <p><strong>У нас вы сможете:</strong></p> <ul> <li>Выбирать любые инструменты</li> <li>Самостоятельно принимать решения</li> <li>Получить огромный опыт работы с REST API</li> <li>Забыть о бюрократии и просто писать код</li> </ul>",
+        "branded_description": null,
+        "vacancy_constructor_template": null,
+        "key_skills": [
+            {
+                "name": "Python"
+            },
+            {
+                "name": "Git"
+            },
+            {
+                "name": "Базы данных"
+            },
+            {
+                "name": "Docker"
+            },
+            {
+                "name": "PostgreSQL"
+            },
+            {
+                "name": "MySQL"
+            },
+            {
+                "name": "RESTful API"
+            },
+            {
+                "name": "RabbitMQ"
+            },
+            {
+                "name": "Kubernetes"
+            },
+            {
+                "name": "Nginx"
+            }
+        ],
+        "accept_handicapped": false,
+        "accept_kids": false,
+        "archived": false,
+        "response_url": null,
+        "specializations": [],
+        "professional_roles": [
+            {
+                "id": "96",
+                "name": "Программист, разработчик"
+            }
+        ],
+        "code": null,
+        "hidden": false,
+        "quick_responses_allowed": false,
+        "driver_license_types": [],
+        "accept_incomplete_resumes": false,
+        "employer": {
+            "id": "3251333",
+            "name": "Индиголаб Логистика",
+            "url": "https://api.hh.ru/employers/3251333",
+            "alternate_url": "https://hh.ru/employer/3251333",
+            "logo_urls": {
+                "original": "https://hhcdn.ru/employer-logo-original/660867.jpg",
+                "240": "https://hhcdn.ru/employer-logo/3084601.jpeg",
+                "90": "https://hhcdn.ru/employer-logo/3084600.jpeg"
+            },
+            "vacancies_url": "https://api.hh.ru/vacancies?employer_id=3251333",
+            "accredited_it_employer": false,
+            "trusted": true
+        },
+        "published_at": "2023-12-01T16:59:33+0300",
+        "created_at": "2023-12-01T16:59:33+0300",
+        "initial_created_at": "2023-11-28T16:59:33+0300",
+        "negotiations_url": null,
+        "suitable_resumes_url": null,
+        "apply_alternate_url": "https://hh.ru/applicant/vacancy_response?vacancyId=90054179",
+        "has_test": false,
+        "test": null,
+        "alternate_url": "https://hh.ru/vacancy/90054179",
+        "working_days": [],
+        "working_time_intervals": [],
+        "working_time_modes": [],
+        "accept_temporary": false,
+        "languages": []
+    }
+]

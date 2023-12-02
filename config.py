@@ -18,6 +18,7 @@ class BaseConfig(Config):
         {"name": "Список вакансий", "url": "/vacancies"},
         {"name": "Сопроводительные письма", "url": "/cover_letters"},
     ]
+    giga_token: str = os.environ.get("GIGA_TOKEN")
 
 
 class DevelopmentConfig(BaseConfig):
