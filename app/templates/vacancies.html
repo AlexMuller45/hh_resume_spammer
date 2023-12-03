@@ -8,14 +8,22 @@
         <div class="list-group">
             <a class="list-group-item" >Всего: {{ vacancies|length }}</a>
             {% for item in vacancies  %}
-                <a href="{{ item.alternate_url }}"
-                   target="_blank"
-                   class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                    {{ item.name }}
-                    <span class="badge bg-light text-dark">#совпадение навыков {{ item.coincidence }}%
-                </a>
+                <dif class="d-flex justify-content-between">
+                    <a href="{{ item.alternate_url }}"
+                       target="_blank"
+                       class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                    >
+                        {{ item.name }}
+                        <span class="badge bg-light text-dark">shared skills: {{ item.coincidence }}%</span>
+                    </a>
+                    <form action="/vacancies/{{ item.id }}" method="POST">
+                        <button type="submit" class="btn btn-outline-danger">
+                            Del
+                        </button>
+                    </form>
+                </dif>
             {% endfor %}
-        <br>
+            <br>
         </div>
     {% else %}
         <div class="alert alert-warning" role="alert">
@@ -29,4 +37,5 @@
              [ Сгенерировать сопроводительные письма ]
         </button>
     </div>
+
 {% endblock %}

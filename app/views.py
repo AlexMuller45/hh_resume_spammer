@@ -9,7 +9,7 @@ from app.get_data import (
     get_full_description,
     load_full_vacancies,
 )
-from app.processing_data import check_skills
+from app.processing_data import check_skills, del_vacancy_by_id
 from config import main_config
 
 
@@ -76,3 +76,9 @@ def get_cover_letters() -> str:
         data=data,
         menu=main_config.main_menu,
     )
+
+
+@app.route("/vacancies/<vac_id>", methods=["POST"])
+def del_vacancy(vac_id: str) -> Response:
+    del_vacancy_by_id(vac_id=vac_id)
+    return redirect(url_for("vacancies_list"), 301)

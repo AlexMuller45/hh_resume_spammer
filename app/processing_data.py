@@ -80,3 +80,21 @@ def generate_letter(item: dict) -> str:
         f"\n+7 (919) 561-67-71, "
         f"\nmas-chel@mail.ru, https://t.me/aleksey_melnikov_77"
     )
+
+
+def del_vacancy_by_id(vac_id: str) -> None:
+    vacancies = load_vacancies()
+    for vac in vacancies:
+        if vac["id"] == vac_id:
+            index = vacancies.index(vac)
+            del vacancies[index]
+            json_to_file(vacancies, filename=main_config.vacancies_filename)
+            break
+
+    full_vacancies = load_full_vacancies()
+    for vac in full_vacancies:
+        if vac["id"] == vac_id:
+            index = full_vacancies.index(vac)
+            del full_vacancies[index]
+            json_to_file(full_vacancies, filename=main_config.full_vacancies_filename)
+            break
