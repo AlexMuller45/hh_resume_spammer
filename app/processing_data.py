@@ -8,9 +8,12 @@ from app.get_data import load_vacancies, load_full_vacancies, json_to_file
 
 
 def check_matching_lists(vac_list: list[str]) -> tuple[int, list[str]]:
-    my_skills_list = main_config.my_skills.lower().split(",")
+    my_skills_list = [
+        skill.strip() for skill in main_config.my_skills.lower().split(",")
+    ]
     intersection = set(vac_list) & set(my_skills_list)
     result = (len(intersection) / len(vac_list)) * 100
+    print(my_skills_list, "\n", vac_list, "\n", intersection)
     return int(result), list(intersection)
 
 
@@ -53,7 +56,6 @@ def get_main_body(item: dict) -> str:
         verify_ssl_certs=False,
     ) as giga:
         response = giga.chat(promt)
-        print(response.choices[0].message.content)
 
     return response.choices[0].message.content
 
@@ -80,6 +82,13 @@ def generate_letter(item: dict) -> str:
         f"\n+7 (919) 561-67-71, "
         f"\nmas-chel@mail.ru, https://t.me/aleksey_melnikov_77"
     )
+
+
+def generate_all_latter(all_vacancies: list[dict]) -> None:
+    for vacancy in tqdm.tqdm(all_vacancies):
+        cover_letter = generate_letter(vacancy)
+        vacancy["cover_letter"] = cover_letter
+    json_to_file(all_vacancies, filename=main_config.full_vacancies_filename)
 
 
 def del_vacancy_by_id(vac_id: str) -> None:

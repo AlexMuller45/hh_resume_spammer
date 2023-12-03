@@ -9,7 +9,8 @@ from app.get_data import (
     get_full_description,
     load_full_vacancies,
 )
-from app.processing_data import check_skills, del_vacancy_by_id
+from app.processing_data import check_skills, del_vacancy_by_id, generate_all_latter
+from app.utils import send_all_negotiations, get_all_negotiations
 from config import main_config
 
 
@@ -66,11 +67,9 @@ def vacancies_list() -> str:
 
 @app.route("/cover_letters", methods=["GET"])
 def get_cover_letters() -> str:
-    vacancies = load_vacancies()
     vacancies_full_description = load_full_vacancies()
-
-    data = "..."
-
+    generate_all_latter(vacancies_full_description)
+    data = load_full_vacancies()
     return render_template(
         template_name_or_list="cover_letters.html",
         data=data,
@@ -82,3 +81,19 @@ def get_cover_letters() -> str:
 def del_vacancy(vac_id: str) -> Response:
     del_vacancy_by_id(vac_id=vac_id)
     return redirect(url_for("vacancies_list"), 301)
+
+
+@app.route("/cover_letters/send_all", methods=["POST"])
+def send_all():
+    send_all_negotiations()
+    return redirect(url_for("get_cover_letters"), 301)
+
+
+@app.route("/vacancies/negotiations", methods=["GET"])
+def get_negotiations():
+    data = get_all_negotiations()
+    return render_template(
+        template_name_or_list="negotiations.html",
+        data=data,
+        menu=main_config.main_menu,
+    )
