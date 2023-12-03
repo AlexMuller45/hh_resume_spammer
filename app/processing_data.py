@@ -4,11 +4,44 @@ import tqdm
 from gigachat import GigaChat
 
 from config import main_config
+from app.get_data import load_vacancies, load_full_vacancies, json_to_file
+
+
+def check_matching_lists(vac_list: list[str]) -> tuple[int, list[str]]:
+    my_skills_list = main_config.my_skills.lower().split(",")
+    intersection = set(vac_list) & set(my_skills_list)
+    result = (len(intersection) / len(vac_list)) * 100
+    return int(result), list(intersection)
+
+
+def add_coincidence_in_vacancy(vac_id: str, value: int) -> None:
+    vacancies = load_vacancies()
+    for vac in vacancies:
+        if vac["id"] == vac_id:
+            vac["coincidence"] = value
+    json_to_file(vacancies, filename=main_config.vacancies_filename)
+
+
+def check_skills():
+    full_vacancies = load_full_vacancies()
+
+    for item in tqdm.tqdm(full_vacancies):
+        if item["key_skills"]:
+            vacancy_skills_list = [elem["name"].lower() for elem in item["key_skills"]]
+            coincidence, suitable_skills = check_matching_lists(vacancy_skills_list)
+            item["coincidence"] = coincidence
+            item["suitable_skills"] = suitable_skills
+            add_coincidence_in_vacancy(item["id"], coincidence)
+        else:
+            item["coincidence"] = 1
+            item["suitable_skills"] = ["python", "GigaChat"]
+            add_coincidence_in_vacancy(item["id"], 1)
+
+    json_to_file(full_vacancies, filename="vacancies_full.json")
 
 
 def get_main_body(item: dict) -> str:
     description = item["description"]
-    skills = item["key_skills"] if len(item["key_skills"]) > 0 else None
 
     promt = (
         f"Напиши краткое сопроводительное письмо на вакансию по описанию: {description}"

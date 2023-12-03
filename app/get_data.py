@@ -36,7 +36,7 @@ def get_vacancies(
     }
 
     response_data = requests.get(url=VACANCIES_URL, params=params)
-    print(response_data.status_code)
+
     if not response_data.ok:
         print("Ошибка: ", response_data)
         return {}

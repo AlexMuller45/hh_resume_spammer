@@ -19,6 +19,9 @@ class BaseConfig(Config):
         {"name": "Сопроводительные письма", "url": "/cover_letters"},
     ]
     giga_token: str = os.environ.get("GIGA_TOKEN")
+    vac_exception: str = os.environ.get("vac_exception")
+    vac_default: str = os.environ.get("vac_default")
+    my_skills: str = os.environ.get("my_skills")
 
 
 class DevelopmentConfig(BaseConfig):

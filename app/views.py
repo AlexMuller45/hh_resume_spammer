@@ -3,7 +3,13 @@ from werkzeug import Response
 
 from app import app
 from app.forms import VacanciesSearchForm
-from app.get_data import get_vacancies, load_vacancies, get_full_description
+from app.get_data import (
+    get_vacancies,
+    load_vacancies,
+    get_full_description,
+    load_full_vacancies,
+)
+from app.processing_data import check_skills
 from config import main_config
 
 
@@ -21,12 +27,14 @@ def main() -> Response | str:
             employment = None
             schedule = form.schedule.data
 
-            get_vacancies(
+            vacancies = get_vacancies(
                 text=text,
                 experience=experience,
                 employment=employment,
                 schedule=schedule,
             )
+
+            get_full_description(vacancies)
 
             return redirect(url_for("vacancies_list"), 301)
 
@@ -45,7 +53,10 @@ def main() -> Response | str:
 
 @app.route("/vacancies", methods=["GET"])
 def vacancies_list() -> str:
+    check_skills()
+
     vacancies = load_vacancies()
+
     return render_template(
         template_name_or_list="vacancies.html",
         vacancies=vacancies,
@@ -56,7 +67,7 @@ def vacancies_list() -> str:
 @app.route("/cover_letters", methods=["GET"])
 def get_cover_letters() -> str:
     vacancies = load_vacancies()
-    vacancies_full_description = get_full_description(vacancies)
+    vacancies_full_description = load_full_vacancies()
 
     data = "..."
 

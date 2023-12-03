@@ -6,9 +6,14 @@
 
     {% if vacancies %}
         <div class="list-group">
-            <a class="list-group-item">Всего: {{ vacancies|length }}</a>
+            <a class="list-group-item" >Всего: {{ vacancies|length }}</a>
             {% for item in vacancies  %}
-                <a href="{{ item.alternate_url }}" target="_blank" class="list-group-item list-group-item-action">{{ item.name }}</a>
+                <a href="{{ item.alternate_url }}"
+                   target="_blank"
+                   class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                    {{ item.name }}
+                    <span class="badge bg-light text-dark">#совпадение навыков {{ item.coincidence }}%
+                </a>
             {% endfor %}
         <br>
         </div>
@@ -19,6 +24,9 @@
     {% endif %}
 
     <div class="d-flex flex-column mb-3">
-        <button class="btn btn-outline-secondary" onclick="window.location.href = '/cover_letters'"> Сгенерировать сопроводительные письма </button>
+        <button class="btn btn-outline-secondary"
+                onclick="window.location.href = '/cover_letters'">
+             [ Сгенерировать сопроводительные письма ]
+        </button>
     </div>
 {% endblock %}
