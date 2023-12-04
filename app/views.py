@@ -67,9 +67,13 @@ def vacancies_list() -> str:
 
 @app.route("/cover_letters", methods=["GET"])
 def get_cover_letters() -> str:
-    vacancies_full_description = load_full_vacancies()
-    generate_all_latter(vacancies_full_description)
     data = load_full_vacancies()
+
+    if data[0]["cover_letter"]:
+        generate_all_latter(data)
+
+        data = load_full_vacancies()
+
     return render_template(
         template_name_or_list="cover_letters.html",
         data=data,
