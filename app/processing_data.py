@@ -1,10 +1,17 @@
 import json
+from datetime import datetime
+
 import requests
 import tqdm
 from gigachat import GigaChat
 
 from config import main_config
-from app.get_data import load_vacancies, load_full_vacancies, json_to_file
+from app.get_data import (
+    load_vacancies,
+    load_full_vacancies,
+    json_to_file,
+    get_vacancy_description_by_id,
+)
 
 
 def check_matching_lists(vac_list: list[str]) -> tuple[int, list[str]]:
@@ -13,7 +20,6 @@ def check_matching_lists(vac_list: list[str]) -> tuple[int, list[str]]:
     ]
     intersection = set(vac_list) & set(my_skills_list)
     result = (len(intersection) / len(vac_list)) * 100
-    print(my_skills_list, "\n", vac_list, "\n", intersection)
     return int(result), list(intersection)
 
 
@@ -25,10 +31,8 @@ def add_coincidence_in_vacancy(vac_id: str, value: int) -> None:
     json_to_file(vacancies, filename=main_config.vacancies_filename)
 
 
-def check_skills():
-    full_vacancies = load_full_vacancies()
-
-    for item in tqdm.tqdm(full_vacancies):
+def check_skills(data: list[dict]):
+    for item in tqdm.tqdm(data):
         if item["key_skills"]:
             vacancy_skills_list = [elem["name"].lower() for elem in item["key_skills"]]
             coincidence, suitable_skills = check_matching_lists(vacancy_skills_list)
@@ -40,7 +44,7 @@ def check_skills():
             item["suitable_skills"] = ["python", "GigaChat"]
             add_coincidence_in_vacancy(item["id"], 1)
 
-    json_to_file(full_vacancies, filename="vacancies_full.json")
+    json_to_file(data, filename="vacancies_full.json")
 
 
 def get_main_body(item: dict) -> str:
@@ -107,3 +111,17 @@ def del_vacancy_by_id(vac_id: str) -> None:
             del full_vacancies[index]
             json_to_file(full_vacancies, filename=main_config.full_vacancies_filename)
             break
+
+
+def get_data_for_table(vac_id: str) -> list[str]:
+    data = get_vacancy_description_by_id(vac_id)
+    return [
+        "NN",
+        data["name"],
+        data["employer"]["name"],
+        data["alternate_url"],
+        data["cover_letter"],
+        datetime.today().strftime("%Y-%m-%d"),
+        "",
+        "hh.ru",
+    ]

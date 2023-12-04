@@ -9,8 +9,17 @@ from app.get_data import (
     get_full_description,
     load_full_vacancies,
 )
-from app.processing_data import check_skills, del_vacancy_by_id, generate_all_latter
-from app.utils import send_all_negotiations, get_all_negotiations
+from app.processing_data import (
+    check_skills,
+    del_vacancy_by_id,
+    generate_all_latter,
+    get_data_for_table,
+)
+from app.utils import (
+    send_all_negotiations,
+    get_all_negotiations,
+    add_row_to_goggle_sheet,
+)
 from config import main_config
 
 
@@ -54,7 +63,9 @@ def main() -> Response | str:
 
 @app.route("/vacancies", methods=["GET"])
 def vacancies_list() -> str:
-    check_skills()
+    data = load_full_vacancies()
+    if "coincidence" not in data[0]:
+        check_skills(data)
 
     vacancies = load_vacancies()
 
@@ -69,7 +80,7 @@ def vacancies_list() -> str:
 def get_cover_letters() -> str:
     data = load_full_vacancies()
 
-    if data[0]["cover_letter"]:
+    if "cover_letter" not in data[0]:
         generate_all_latter(data)
 
         data = load_full_vacancies()
@@ -101,3 +112,10 @@ def get_negotiations():
         data=data,
         menu=main_config.main_menu,
     )
+
+
+@app.route("/cover_letters/add_to_table/<vac_id>", methods=["POST"])
+def add_row_in_google_table(vac_id: str):
+    data = get_data_for_table(vac_id)
+    add_row_to_goggle_sheet(data)
+    return redirect(url_for("get_cover_letters"), 301)

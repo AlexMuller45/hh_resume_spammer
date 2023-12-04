@@ -1,5 +1,6 @@
 import json
 import requests
+import gspread
 
 from app.get_data import load_full_vacancies
 from config import main_config
@@ -73,3 +74,10 @@ def get_all_negotiations() -> json:
         return {}
     all_negotiations = response_data.json()["items"]
     return all_negotiations
+
+
+def add_row_to_goggle_sheet(data: list[str]) -> dict:
+    gc = gspread.service_account(filename=main_config.google_service_account_filename)
+    sht = gc.open_by_url(main_config.google_sheet_url)
+    sht.append_row(data)
+    return {"status": "Ok"}

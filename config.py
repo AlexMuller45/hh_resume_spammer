@@ -29,6 +29,8 @@ class BaseConfig(Config):
     code = os.environ.get("CODE")
     token_URL = os.environ.get("HH_TOKEN_URL")
     HH_User_Agent = os.environ.get("HH_User_Agent")
+    google_service_account_filename = os.environ.get("GOOGLE_SERVICE_ACCOUNT_FILENAME")
+    google_sheet_url = os.environ.get("GOOGLE_SHEET_URL")
 
 
 class DevelopmentConfig(BaseConfig):

@@ -95,3 +95,11 @@ def load_vacancies() -> list[dict]:
 
 def load_full_vacancies() -> list[dict]:
     return load_json(main_config.full_vacancies_filename)
+
+
+def get_vacancy_description_by_id(vac_id) -> dict:
+    full_vacancy = load_full_vacancies()
+    for item in full_vacancy:
+        if item["id"] == vac_id:
+            return item
+    return {"status": "No found"}
