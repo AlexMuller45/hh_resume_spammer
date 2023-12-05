@@ -79,7 +79,9 @@ def get_all_negotiations() -> json:
 
 
 def add_row_to_goggle_sheet(data: list[str]) -> dict:
-    sa: Client = gspread.service_account(filename=main_config.google_service_account_filename)
+    sa: Client = gspread.service_account(
+        filename=main_config.google_service_account_filename
+    )
     sh: Spreadsheet = sa.open_by_key("1NN0jWjesc3jKnZ6IWq0yLS73Jxi3mgtr0LDIx9ELs1s")
     wks: Worksheet = sh.worksheet("Активный поиск")
 
