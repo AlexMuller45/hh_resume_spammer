@@ -1,6 +1,8 @@
 import json
+
 import requests
 import gspread
+from gspread import Client, Spreadsheet, Worksheet
 
 from app.get_data import load_full_vacancies
 from config import main_config
@@ -77,7 +79,12 @@ def get_all_negotiations() -> json:
 
 
 def add_row_to_goggle_sheet(data: list[str]) -> dict:
-    gc = gspread.service_account(filename=main_config.google_service_account_filename)
-    sht = gc.open_by_url(main_config.google_sheet_url)
-    sht.append_row(data)
+    sa: Client = gspread.service_account(filename=main_config.google_service_account_filename)
+    sh: Spreadsheet = sa.open_by_key("1NN0jWjesc3jKnZ6IWq0yLS73Jxi3mgtr0LDIx9ELs1s")
+    wks: Worksheet = sh.worksheet("Активный поиск")
+
+    wks.append_row(data)
+
+    print({"status": "Ok"})
+
     return {"status": "Ok"}

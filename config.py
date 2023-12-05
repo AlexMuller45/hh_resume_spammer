@@ -31,6 +31,7 @@ class BaseConfig(Config):
     HH_User_Agent = os.environ.get("HH_User_Agent")
     google_service_account_filename = os.environ.get("GOOGLE_SERVICE_ACCOUNT_FILENAME")
     google_sheet_url = os.environ.get("GOOGLE_SHEET_URL")
+    google_sheet_key = os.environ.get("GOOGLE_SHEET_KEY ")
 
 
 class DevelopmentConfig(BaseConfig):

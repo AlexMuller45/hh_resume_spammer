@@ -17,9 +17,7 @@
                         <span class="badge bg-light text-dark">shared skills: {{ item.coincidence }}%</span>
                     </a>
                     <form action="/vacancies/{{ item.id }}" method="POST">
-                        <button type="submit" class="btn btn-outline-danger">
-                            Del
-                        </button>
+                        <button type="submit" class="btn btn-outline-danger"> Del </button>
                     </form>
                 </dif>
             {% endfor %}

@@ -114,7 +114,7 @@ def get_negotiations():
     )
 
 
-@app.route("/cover_letters/add_to_table/<vac_id>", methods=["POST"])
+@app.route("/cover_letters/add_to_table/<vac_id>", methods=["GET"])
 def add_row_in_google_table(vac_id: str):
     data = get_data_for_table(vac_id)
     add_row_to_goggle_sheet(data)

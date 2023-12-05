@@ -10,9 +10,27 @@
                 <li class="list-group-item d-flex justify-content-between align-items-start">
                     <div class="ms-2 me-auto">
                         <div class="fw-bold">#{{ item.id }}# {{ item.name }}</div>
-                        <p class="mb-1">{{ item.cover_letter }}</p>
+                        <p class="fs-6 fw-light">{{ item.cover_letter }}</p>
                         <small> {{ item.suitable_skills }} #{{ item.coincidence }}%</small>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a class="btn btn-outline-danger btn-sm disabled"
+                               href="#"
+                               role="button">
+                                [ Edit ]
+                            </a>
+                            <a class="btn btn-outline-primary btn-sm disabled"
+                               href="#"
+                               role="button">
+                                [ Send ]
+                            </a>
+                            <a class="btn btn-outline-info btn-sm"
+                               href="/cover_letters/add_to_table/{{ item.id }}"
+                               role="button">
+                                [ Add to report ]
+                            </a>
+                        </div>
                     </div>
+
                 </li>
             {% endfor %}
         </ul>
