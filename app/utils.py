@@ -4,7 +4,8 @@ import requests
 import gspread
 from gspread import Client, Spreadsheet, Worksheet
 
-from app.get_data import load_full_vacancies
+from app.get_data import load_full_vacancies, get_vacancy_description_by_id
+from app.processing_data import get_data_for_table
 from config import main_config
 
 
@@ -32,25 +33,30 @@ def get_id_resume(access_token: str) -> None:
     print(resume_list)
 
 
-def send_negotiation(
-    vacancy_id: str, resume_id: str, message: str, access_token: str
-) -> None:
+def send_negotiation(vacancy_id: str) -> None:
+    vacancy_description = get_vacancy_description_by_id(vacancy_id)
+    message = vacancy_description["cover_letter"]
+
     headers = {
-        "Authorization": f"Bearer {access_token}",
+        "Authorization": f"Bearer {main_config.hh_token}",
         "HH-User-Agent": main_config.HH_User_Agent,
     }
     params = {
         "vacancy_id": vacancy_id,
-        "resume_id": resume_id,
+        "resume_id": main_config.hh_resume_id,
         "message": message,
     }
+
     requests.post(main_config.negotiations_URL, headers=headers, params=params)
+
+    data = get_data_for_table(vacancy_id)
+    add_row_to_goggle_sheet(data)
 
 
 def send_all_negotiations() -> None:
     all_vacancies = load_full_vacancies()
-    resume_id = "####"
-    access_token = get_hh_token()
+    resume_id = main_config.hh_resume_id
+    access_token = main_config.hh_token
 
     for vacancy in all_vacancies:
         send_negotiation(
@@ -86,7 +92,5 @@ def add_row_to_goggle_sheet(data: list[str]) -> dict:
     wks: Worksheet = sh.worksheet("Активный поиск")
 
     wks.append_row(data)
-
-    print({"status": "Ok"})
 
     return {"status": "Ok"}

@@ -23,11 +23,13 @@ class BaseConfig(Config):
     vac_exception: str = os.environ.get("vac_exception")
     vac_default: str = os.environ.get("vac_default")
     my_skills: str = os.environ.get("my_skills")
-    resume_id = os.environ.get("RESUME_ID")
-    client_id = os.environ.get("CLIENT_ID")
-    client_secret = os.environ.get("CLIENT_SECRET")
-    code = os.environ.get("CODE")
-    token_URL = os.environ.get("HH_TOKEN_URL")
+
+    hh_resume_id = os.environ.get("RESUME_ID")
+    hh_client_id = os.environ.get("HH_CLIENT_ID")
+    hh_client_secret = os.environ.get("HH_CLIENT_SECRET")
+    hh_token = os.environ.get("HH_TOKEN")
+
+    hh_token_URL = os.environ.get("HH_TOKEN_URL")
     HH_User_Agent = os.environ.get("HH_User_Agent")
     google_service_account_filename = os.environ.get("GOOGLE_SERVICE_ACCOUNT_FILENAME")
     google_sheet_url = os.environ.get("GOOGLE_SHEET_URL")

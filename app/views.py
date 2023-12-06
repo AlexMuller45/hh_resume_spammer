@@ -19,6 +19,7 @@ from app.utils import (
     send_all_negotiations,
     get_all_negotiations,
     add_row_to_goggle_sheet,
+    send_negotiation,
 )
 from config import main_config
 
@@ -101,6 +102,14 @@ def del_vacancy(vac_id: str) -> Response:
 @app.route("/cover_letters/send_all", methods=["POST"])
 def send_all():
     send_all_negotiations()
+    return redirect(url_for("get_cover_letters"), 301)
+
+
+@app.route("/cover_letters/<vac_id>", methods=["POST"])
+def send_negotiation_by_vacancy(vac_id: str):
+    send_negotiation(
+        vac_id,
+    )
     return redirect(url_for("get_cover_letters"), 301)
 
 

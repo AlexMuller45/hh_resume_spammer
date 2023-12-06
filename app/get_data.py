@@ -63,7 +63,7 @@ def get_full_description(vacancies: json) -> json:
         vacancy_id = entry["id"]
         description = requests.get(url=f"{VACANCIES_URL}/{vacancy_id}")
         vacancies_full.append(description.json())
-        time.sleep(0.2)
+        time.sleep(0.05)
 
     json_to_file(vacancies_full, filename="vacancies_full.json")
     return vacancies_full
