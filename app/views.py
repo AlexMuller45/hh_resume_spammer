@@ -105,7 +105,7 @@ def send_all():
     return redirect(url_for("get_cover_letters"), 301)
 
 
-@app.route("/cover_letters/<vac_id>", methods=["POST"])
+@app.route("/cover_letters/<vac_id>", methods=["GET"])
 def send_negotiation_by_vacancy(vac_id: str):
     send_negotiation(
         vac_id,

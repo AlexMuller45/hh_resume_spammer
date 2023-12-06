@@ -9,19 +9,6 @@ from app.processing_data import get_data_for_table
 from config import main_config
 
 
-def get_hh_token() -> str:
-    params = {
-        "grant_type": "authorization_code",
-        "client_id": main_config.client_id,
-        "client_secret": main_config.client_secret,
-        "code": main_config.code,
-    }
-    response = requests.post(main_config.token_URL, data=params)
-    access_token = response.json()["access_token"]
-
-    return access_token
-
-
 def get_id_resume(access_token: str) -> None:
     headers = {
         "Authorization": f"Bearer {access_token}",
@@ -33,9 +20,10 @@ def get_id_resume(access_token: str) -> None:
     print(resume_list)
 
 
-def send_negotiation(vacancy_id: str) -> None:
-    vacancy_description = get_vacancy_description_by_id(vacancy_id)
-    message = vacancy_description["cover_letter"]
+def send_negotiation(vacancy_id: str, message: str | None = None) -> None:
+    if message is None:
+        vacancy_description = get_vacancy_description_by_id(vacancy_id)
+        message = vacancy_description["cover_letter"]
 
     headers = {
         "Authorization": f"Bearer {main_config.hh_token}",
@@ -55,15 +43,11 @@ def send_negotiation(vacancy_id: str) -> None:
 
 def send_all_negotiations() -> None:
     all_vacancies = load_full_vacancies()
-    resume_id = main_config.hh_resume_id
-    access_token = main_config.hh_token
 
     for vacancy in all_vacancies:
         send_negotiation(
             vacancy_id=vacancy["id"],
-            resume_id=resume_id,
             message=vacancy["cover_letter"],
-            access_token=access_token,
         )
 
 

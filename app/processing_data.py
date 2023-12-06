@@ -1,7 +1,4 @@
-import json
 from datetime import datetime
-
-import requests
 import tqdm
 from gigachat import GigaChat
 
