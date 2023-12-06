@@ -99,7 +99,7 @@ def del_vacancy(vac_id: str) -> Response:
     return redirect(url_for("vacancies_list"), 301)
 
 
-@app.route("/cover_letters/send_all", methods=["POST"])
+@app.route("/cover_letters/send_all", methods=["GET"])
 def send_all():
     send_all_negotiations()
     return redirect(url_for("get_cover_letters"), 301)

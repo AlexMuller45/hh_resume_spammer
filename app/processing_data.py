@@ -79,9 +79,9 @@ def generate_letter(item: dict) -> str:
         f"Здравствуйте!"
         f"\n{main_body}"
         f"\nС уважением,"
-        f"\nМельников Алексей."
-        f"\n+7 (919) 561-67-71, "
-        f"\nmas-chel@mail.ru, https://t.me/aleksey_melnikov_77"
+        f"\n{main_config.my_name}."
+        f"\n{main_config.my_phone}, "
+        f"\n{main_config.my_contact}."
     )
 
 

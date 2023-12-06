@@ -7,7 +7,7 @@
         <div class="list-group">
             <a class="list-group-item" >Всего откликов: {{ data|length }}</a>
             {% for item in data %}
-                <a class="list-group-item" ># {{ item.id }} # {{ item.vacancy.id }} - {{ item.vacancy.name }} </a>
+                <a class="list-group-item" ># ID{{ item.id }} # ID вакансии: {{ item.vacancy.id }} - {{ item.vacancy.name }} </a>
             {% endfor %}
         </div>
     {% endif %}

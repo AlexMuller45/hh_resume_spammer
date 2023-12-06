@@ -1,5 +1,5 @@
 import json
-
+import tqdm
 import requests
 import gspread
 from gspread import Client, Spreadsheet, Worksheet
@@ -44,7 +44,7 @@ def send_negotiation(vacancy_id: str, message: str | None = None) -> None:
 def send_all_negotiations() -> None:
     all_vacancies = load_full_vacancies()
 
-    for vacancy in all_vacancies:
+    for vacancy in tqdm.tqdm(all_vacancies):
         send_negotiation(
             vacancy_id=vacancy["id"],
             message=vacancy["cover_letter"],
@@ -53,9 +53,8 @@ def send_all_negotiations() -> None:
 
 def get_all_negotiations() -> json:
     params = {"status": "active"}
-    hh_token = get_hh_token()
     headers = {
-        "Authorization": f"Bearer {hh_token}",
+        "Authorization": f"Bearer {main_config.hh_token}",
         "HH-User-Agent": main_config.HH_User_Agent,
     }
     response_data = requests.get(
