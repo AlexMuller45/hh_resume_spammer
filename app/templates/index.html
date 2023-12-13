@@ -54,7 +54,31 @@
         </div>
 
         <div class="d-flex flex-column mb-3">
-            <button type="submit" class="btn btn-outline-secondary"> Найти </button>
+            <button type="submit"
+                    class="btn btn-outline-secondary"
+                    id="searchBtn"
+                    style="display: block"
+                    onclick="showSpinner()">
+            [ Найти ]
+            </button>
         </div>
+
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border text-secondary"
+                 role="status"
+                 style="display: none"
+                 id="spinner">
+            </div>
+        </div>
+
     </form>
+
+    <script>
+      function showSpinner() {
+        document.getElementById("spinner").style.display = "block";
+        document.getElementById("searchBtn").style.display = "none";
+        window.location.href = "/cover_letters";
+      }
+    </script>
+
 {% endblock %}

@@ -65,7 +65,8 @@ def main() -> Response | str:
 @app.route("/vacancies", methods=["GET"])
 def vacancies_list() -> str:
     data = load_full_vacancies()
-    if "coincidence" not in data[0]:
+
+    if data and ("coincidence" not in data[0]):
         check_skills(data)
 
     vacancies = load_vacancies()

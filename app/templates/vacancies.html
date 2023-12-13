@@ -25,15 +25,33 @@
         </div>
     {% else %}
         <div class="alert alert-warning" role="alert">
-            Нет вакансий удовлетворяющих запросу!
+            Нет вакансий!
         </div>
     {% endif %}
 
     <div class="d-flex flex-column mb-3">
         <button class="btn btn-outline-secondary"
-                onclick="window.location.href = '/cover_letters'">
-             [ Сгенерировать сопроводительные письма ]
+                style="display: block"
+                onclick="showSpinner()"
+                id="genBtn">
+            [ Сгенерировать сопроводительные письма ]
         </button>
     </div>
+
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border text-secondary"
+             role="status"
+             style="display: none"
+             id="spinner">
+        </div>
+    </div>
+
+    <script>
+      function showSpinner() {
+        document.getElementById("spinner").style.display = "block";
+        document.getElementById("genBtn").style.display = "none";
+        window.location.href = "/cover_letters";
+      }
+    </script>
 
 {% endblock %}
