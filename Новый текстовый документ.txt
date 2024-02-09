@@ -1,0 +1,17 @@
+запросить код:
+https://hh.ru/oauth/authorize?response_type=code&client_id=..................
+
+код вставить в code:
+
+$Uri = 'https://api.hh.ru/token'
+
+$Body = @{
+>> client_id = '.......';
+>> client_secret = '.........';
+>> grant_type = 'authorization_code';
+>> code = '........'
+>> }
+
+запросить токен
+
+Invoke-RestMethod -Method 'Post' -Uri $Uri -Body $Body -ContentType 'application/x-www-form-urlencoded'

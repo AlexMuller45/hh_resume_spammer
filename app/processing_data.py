@@ -48,7 +48,7 @@ def get_main_body(item: dict) -> str:
     description = item["description"]
 
     promt = (
-        f"Напиши краткое сопроводительное письмо на вакансию по описанию: {description}"
+        f"Напиши краткое сопроводительное письмо от имени {main_config.user_name} на вакансию по описанию: {description}"
     )
 
     with GigaChat(
@@ -76,8 +76,7 @@ def generate_letter(item: dict) -> str:
         main_body = main_body[:index_begin_footer].strip()
 
     return (
-        f"Здравствуйте!"
-        f"\n{main_body}"
+        f"{main_body}"
         f"\nС уважением,"
         f"\n{main_config.my_name}."
         f"\n{main_config.my_phone}, "

@@ -43,6 +43,8 @@ class BaseConfig(Config):
     my_phone = os.environ.get("MY_PHONE")
     my_contact = os.environ.get("MY_CONTACT")
 
+    user_name = 'Мельников Алексей'
+
 
 class DevelopmentConfig(BaseConfig):
     DEBUG = True
